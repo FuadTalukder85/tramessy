@@ -1,99 +1,105 @@
-'use client';
+"use client";
 
-import { motion } from 'framer-motion';
-import { useInView } from 'framer-motion';
-import { useRef, useState } from 'react';
-import { 
-  Phone, 
-  Mail, 
-  MapPin, 
-  Clock, 
+import { motion } from "framer-motion";
+import { useInView } from "framer-motion";
+import { useRef, useState } from "react";
+import {
+  Phone,
+  Mail,
+  MapPin,
+  Clock,
   Send,
   MessageSquare,
   User,
   Building,
-  CheckCircle
-} from 'lucide-react';
-import { Button } from '@/components/ui/button';
+  CheckCircle,
+} from "lucide-react";
+import { Button } from "@/components/ui/button";
 
 const ContactSection = () => {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, threshold: 0.2 });
+  const isInView = useInView(ref, { once: true, amount: 0.2 });
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    company: '',
-    message: ''
+    name: "",
+    email: "",
+    phone: "",
+    company: "",
+    message: "",
   });
   const [isSubmitted, setIsSubmitted] = useState(false);
 
   const contactInfo = [
     {
       icon: Phone,
-      title: 'ফোন',
-      info: '+৮৮০ ১৭৭৭ ১২৩৪৫৬',
-      subInfo: '+৮৮০ ১৮৮৮ ৬৫৪৩২১',
-      color: 'bg-green-500'
+      title: "ফোন",
+      info: "+৮৮০ ১৭৭৭ ১২৩৪৫৬",
+      subInfo: "+৮৮০ ১৮৮৮ ৬৫৪৩২১",
+      color: "bg-green-500",
     },
     {
       icon: Mail,
-      title: 'ইমেইল',
-      info: 'info@trameci.com',
-      subInfo: 'support@trameci.com',
-      color: 'bg-blue-500'
+      title: "ইমেইল",
+      info: "info@trameci.com",
+      subInfo: "support@trameci.com",
+      color: "bg-blue-500",
     },
     {
       icon: MapPin,
-      title: 'ঠিকানা',
-      info: 'ঢাকা, বাংলাদেশ',
-      subInfo: 'সকল বিভাগে সেবা',
-      color: 'bg-purple-500'
+      title: "ঠিকানা",
+      info: "ঢাকা, বাংলাদেশ",
+      subInfo: "সকল বিভাগে সেবা",
+      color: "bg-purple-500",
     },
     {
       icon: Clock,
-      title: 'সময়',
-      info: 'রবি - বৃহস্পতি: ৯:০০ - ৬:০০',
-      subInfo: '২৪/৭ ইমার্জেন্সি সাপোর্ট',
-      color: 'bg-orange-500'
-    }
+      title: "সময়",
+      info: "রবি - বৃহস্পতি: ৯:০০ - ৬:০০",
+      subInfo: "২৪/৭ ইমার্জেন্সি সাপোর্ট",
+      color: "bg-orange-500",
+    },
   ];
 
   const features = [
-    'ফ্রি ডেমো ও পরামর্শ',
-    'তাৎক্ষণিক সাপোর্ট',
-    'কাস্টমাইজড সমাধান',
-    'প্রশিক্ষণ ও গাইডেন্স'
+    "ফ্রি ডেমো ও পরামর্শ",
+    "তাৎক্ষণিক সাপোর্ট",
+    "কাস্টমাইজড সমাধান",
+    "প্রশিক্ষণ ও গাইডেন্স",
   ];
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (
+    e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>
+  ) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     // Here you would typically send the form data to your backend
-    console.log('Form submitted:', formData);
+    console.log("Form submitted:", formData);
     setIsSubmitted(true);
-    
+
     // Reset form after 3 seconds
     setTimeout(() => {
       setIsSubmitted(false);
       setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        company: '',
-        message: ''
+        name: "",
+        email: "",
+        phone: "",
+        company: "",
+        message: "",
       });
     }, 3000);
   };
 
   return (
-    <section id="contact" className="py-20 bg-gradient-to-b from-white to-primary-50" ref={ref}>
+    <section
+      id="contact"
+      className="py-20 bg-gradient-to-b from-white to-primary-50"
+      ref={ref}
+    >
       <div className="container mx-auto px-4">
         {/* Header */}
         <motion.div
@@ -106,8 +112,8 @@ const ContactSection = () => {
             আমাদের সাথে যোগাযোগ করুন
           </h2>
           <p className="text-xl text-primary-700 max-w-4xl mx-auto leading-relaxed">
-            আপনার ব্যবসার জন্য সঠিক সমাধান পেতে আজই আমাদের সাথে কথা বলুন। 
-            আমাদের এক্সপার্ট টিম আপনাকে সাহায্য করতে প্রস্তুত।
+            আপনার ব্যবসার জন্য সঠিক সমাধান পেতে আজই আমাদের সাথে কথা বলুন। আমাদের
+            এক্সপার্ট টিম আপনাকে সাহায্য করতে প্রস্তুত।
           </p>
         </motion.div>
 
@@ -126,10 +132,14 @@ const ContactSection = () => {
               transition={{ duration: 0.6, delay: 0.4 + index * 0.1 }}
               className="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 text-center group"
             >
-              <div className={`${item.color} p-4 rounded-full inline-flex mb-4 group-hover:scale-110 transition-transform`}>
+              <div
+                className={`${item.color} p-4 rounded-full inline-flex mb-4 group-hover:scale-110 transition-transform`}
+              >
                 <item.icon className="h-6 w-6 text-white" />
               </div>
-              <h3 className="text-lg font-bold text-primary mb-2">{item.title}</h3>
+              <h3 className="text-lg font-bold text-primary mb-2">
+                {item.title}
+              </h3>
               <p className="text-primary-700 font-medium mb-1">{item.info}</p>
               <p className="text-primary-600 text-sm">{item.subInfo}</p>
             </motion.div>
@@ -263,7 +273,8 @@ const ContactSection = () => {
                   ধন্যবাদ!
                 </h4>
                 <p className="text-primary-700">
-                  আপনার বার্তা পাঠানো হয়েছে। আমরা শীঘ্রই আপনার সাথে যোগাযোগ করব।
+                  আপনার বার্তা পাঠানো হয়েছে। আমরা শীঘ্রই আপনার সাথে যোগাযোগ
+                  করব।
                 </p>
               </motion.div>
             )}
@@ -281,7 +292,7 @@ const ContactSection = () => {
               <h3 className="text-2xl font-bold mb-6">
                 কেন আমাদের সাথে যোগাযোগ করবেন?
               </h3>
-              
+
               <div className="space-y-4">
                 {features.map((feature, index) => (
                   <motion.div
@@ -303,7 +314,7 @@ const ContactSection = () => {
               <h3 className="text-2xl font-bold text-primary mb-6">
                 তাৎক্ষণিক সাহায্য
               </h3>
-              
+
               <div className="space-y-6">
                 <div className="flex items-center space-x-4 p-4 bg-green-50 rounded-lg">
                   <div className="bg-green-500 p-3 rounded-full">
@@ -342,7 +353,7 @@ const ContactSection = () => {
               <h3 className="text-2xl font-bold text-primary mb-6">
                 অফিস সময়
               </h3>
-              
+
               <div className="space-y-3">
                 <div className="flex justify-between">
                   <span className="text-primary-700">রবিবার - বৃহস্পতিবার</span>
